@@ -7,3 +7,20 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  mail:
+    host: 
+    port: 
+    username: 
+    password: 
+    properties:
+      mail:
+        smtp:
+          auth: None
+          starttls:
+            enable: true
+            
+authframework:
+  jwt:
+    hskey: 
+    audience: testaudience
+    token-ttl: 86400000

@@ -6,6 +6,9 @@ import org.example.service.ImmobileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import it.pasqualecavallo.studentsmaterial.authorization_framework.security.RoleSecurity;
+import it.pasqualecavallo.studentsmaterial.authorization_framework.security.ZeroSecurity;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -17,11 +20,13 @@ public class ImmobileController {
     private ImmobileService immobileService;
 
     @PostMapping
+    @RoleSecurity(value = { "ROLE_AGENZIA", "ROLE_ADMIN"})
     public ImmobileResponseDto postImmobile(@RequestBody ImmobileRequestDto request) {
         return immobileService.postImmobile(request);
     }
 
     @GetMapping("/{id}")
+    @ZeroSecurity
     public ImmobileResponseDto getImmobile(@PathVariable("id") Long id) {
         return immobileService.getImmobile(id);
     }
@@ -29,6 +34,7 @@ public class ImmobileController {
 
 
     @GetMapping("/page")
+    @ZeroSecurity
     public List<ImmobileResponseDto> getImmobilePage(@RequestParam Integer page, @RequestParam Integer pageSize) {
         return immobileService.getImmobilePage(page, pageSize);
 
