@@ -8,10 +8,10 @@ spring:
     hibernate:
       ddl-auto: update
   mail:
-    host: 
-    port: 
-    username: 
-    password: 
+    host: smtp.gmail.com
+    port: 587
+    username: studiomedico.gruppo1.java8@gmail.com
+    password: csrenoniyugittmc
     properties:
       mail:
         smtp:
@@ -21,6 +21,6 @@ spring:
             
 authframework:
   jwt:
-    hskey: 
+    hskey: KTlgvPcXbnLoYl6b5Ma1oG294dGoZ+fyxBqJiBjQjVo=
     audience: testaudience
     token-ttl: 86400000

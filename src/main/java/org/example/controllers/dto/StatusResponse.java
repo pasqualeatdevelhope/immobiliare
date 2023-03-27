@@ -2,7 +2,7 @@ package org.example.controllers.dto;
 
 public class StatusResponse {
 
-	private Status status;
+	private Status status = Status.OK;
 	private String errorMessage;
 
 	public enum Status {

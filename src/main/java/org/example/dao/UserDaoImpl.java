@@ -25,7 +25,7 @@ public class UserDaoImpl implements UserDao {
 			UserDetails userDetails = new UserDetails();
 			userDetails.setPassword(u.getPassword());
 			userDetails.setUsername(u.getUsername());
-			userDetails.setRoles(Arrays.asList("ROLE_USER"));
+			userDetails.setRoles(Arrays.asList(u.getRuolo().getNomeRuolo()));
 			return userDetails;
 		} else {
 			return null;

@@ -20,7 +20,7 @@ public class ImmobileController {
     private ImmobileService immobileService;
 
     @PostMapping
-    @RoleSecurity(value = { "ROLE_AGENZIA", "ROLE_ADMIN"})
+    @RoleSecurity(value = { "ROLE_AGENZIA" })
     public ImmobileResponseDto postImmobile(@RequestBody ImmobileRequestDto request) {
         return immobileService.postImmobile(request);
     }
@@ -41,6 +41,7 @@ public class ImmobileController {
     }
 
     @PutMapping("/{id}")
+    @RoleSecurity(value = { "ROLE_AGENZIA" })
     public ImmobileResponseDto putImmobile(@PathVariable("id") Long id,
                                            @RequestBody ImmobileRequestDto request)  {
         return immobileService.putImmobile(id,request);
@@ -48,6 +49,7 @@ public class ImmobileController {
 
 
     @DeleteMapping("/{id}")
+    @RoleSecurity(value = { "ROLE_AGENZIA", "ROLE_ADMINISTRATOR"})
     public ImmobileResponseDto delete(@PathVariable("id") Long id) {
         return immobileService.delete(id);
     }
