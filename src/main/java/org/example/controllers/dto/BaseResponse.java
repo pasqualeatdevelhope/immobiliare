@@ -1,7 +1,7 @@
 package org.example.controllers.dto;
 
 public class BaseResponse {
-	private Status status;
+	private Status status = Status.OK;
 	private String errorMessage;
 
 	public Status getStatus() {
@@ -21,7 +21,11 @@ public class BaseResponse {
 	}
 
 	public enum Status {
-		OK, KO;
+		OK, KO
+	}
+
+	public static BaseResponse ok(){
+		return new BaseResponse();
 	}
 
 }
