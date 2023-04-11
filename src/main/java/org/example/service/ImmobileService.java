@@ -7,17 +7,27 @@ import org.example.controllers.dto.ImmobileRequestDto;
 import org.example.controllers.dto.ImmobileResponseDto;
 import org.example.entity.Immobile;
 import org.example.repository.ImmobileRepository;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import jakarta.annotation.PostConstruct;
+
 @Service
-public class ImmobileService {
+public class ImmobileService implements InitializingBean {
 
     @Autowired
     private ImmobileRepository immobileRepository;
 
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		immobileRepository.save(null);
+	}
+
+    
     public ImmobileResponseDto postImmobile(ImmobileRequestDto request) {
         return immobileEntityToResponse(immobileRepository.save(immobileRequestToEntity(request)));
     }
@@ -76,5 +86,4 @@ public class ImmobileService {
         response.setVenditore(immobile.getVenditore());
         return response;
     }
-
 }
